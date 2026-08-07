@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "Mpy Remote Workspace",
+			"uri": "pico:"
+		}
+	],
+	"settings": {
+		"python.languageServer": "Pylance",
+		"circuitpythonsync.cpbaseversion": "10",
+		"circuitpythonsync.cpfullversion": "10.2.1",
+		"circuitpythonsync.curlibtag": "20260606",
+		"python.analysis.extraPaths": [
+			"c:\\Users\\skrdl\\AppData\\Roaming\\Code\\User\\globalStorage\\padgettholdings.circuitpythonsync\\stubs\\circuitpython_stubs-10.2.1\\board_definitions\\adafruit_feather_rp2350",
+			"c:\\Users\\skrdl\\AppData\\Roaming\\Code\\User\\globalStorage\\padgettholdings.circuitpythonsync\\stubs\\circuitpython_stubs-10.2.1"
+		],
+		"circuitpythonsync.cpboardname": "adafruit_feather_rp2350"
+	}
+}
