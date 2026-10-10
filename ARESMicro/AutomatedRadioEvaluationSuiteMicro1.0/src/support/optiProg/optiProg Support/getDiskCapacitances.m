@@ -1,4 +1,15 @@
 function [C1_total, C2_total] = getDiskCapacitances(gap) 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DESCRIPTION: 
+% Get the capactitance of each disk individually. 
+%
+% INPUT:
+%   gap    -vector of actuator gaps
+%
+% OUTPUT:
+%   C2_total           - simple parallel plate capacitance result
+%   C2_total           - more accurate model result
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     gap = gap .* 1e-6;
     [b, inner_r, wr, e0, ~] = getPhysicalConst();
 

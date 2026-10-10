@@ -1,4 +1,13 @@
 function C_ring = getRingCap()
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DESCRIPTION: 
+% Calculates the ring capacitance of the device model. 
+%
+% INPUT:
+%
+% OUTPUT:
+%   void
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     [~, inner_r, wr, e0, er] = getPhysicalConst();
     % --- Fringing / Coplanar Component (Bessel Integral) ---
     % Explicitly map 'r' for the integrand to match your math syntax

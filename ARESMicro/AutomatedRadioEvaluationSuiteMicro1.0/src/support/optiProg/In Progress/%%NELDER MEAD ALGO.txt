@@ -1,0 +1,78 @@
+%%NELDER MEAD ALGO
+% Dimensions
+    b = .01;        % Outer radius 
+    inner_r = .003; % Inner radius (This maps to 'r' in your integral formula)
+    wr = .0001524;  % Width of the ring
+    e0 = 8.854e-12; % Vacuum permittivity (F/m)
+    er = 3.7;       % Relative permittivity
+    targetCost = 2.7; 
+    S_params = ["S21", "S31", "S11"];
+    
+    % Find starting positions
+    [bestGaps, maxCGap, minCGap, cost, worstCost, beta_, span] = ...
+        findBestStartPos(app, weights, freq_min, freq_max, e0, er, inner_r, wr, b, S_params);
+    
+    maxIteration = 25;
+    
+    % Initialize tracking arrays
+    costHistory = cost;
+    gapHistory = bestGaps(:)';
+    
+    % Define the physical objective function wrapper
+    physicalObjective = @(g) evaluateHardwareCost(app, g, weights, freq_min, freq_max, S_params, minCGap, maxCGap);
+    
+    % Configure fminsearch options
+    options = optimset('Display', 'iter', ...
+                       'MaxIter', maxIteration, ...
+                       'MaxFunEvals', maxIteration * 2, ...
+                       'TolX', 10, ...             % Stop if gap changes are < 10 units (microns/steps)
+                       'TolFun', 0.05, ...         % Stop if cost changes are negligible
+                       'OutputFcn', @(g, optimValues, state) outfun(g, optimValues, state));
+    
+    % Run Nelder-Mead
+    % fminsearch will automatically probe 5 points nearby and step towards the minimum
+    [bestGaps, finalCost] = fminsearch(physicalObjective, bestGaps(:)', options);
+    
+    % Bound-check final physical output just in case
+    bestGaps = min(max(round(bestGaps), minCGap), maxCGap);
+    
+    % Plot the optimization run
+    plotOutputMetrics(costHistory, gapHistory, minCGap, maxCGap, targetCost);
+    
+    % Send final optimal physical positions to Pico
+    waitForResponse(app);
+    cmdToSend = sprintf("%s %d %d %d %d", app.COMMANDS(4), bestGaps);
+    writeline(app.pico, cmdToSend);
+    
+    % === NESTED HELPER FUNCTIONS ===
+    % (Nested functions share variable scope with the parent, letting us append to history arrays easily)
+
+    function c = evaluateHardwareCost(app, g, w, f_min, f_max, s_p, minG, maxG)
+        % Constrain the test inputs physically before applying them to the actuators
+        g_constrained = min(max(round(g), minG), maxG);
+        
+        disp("Probing Hardware Gaps: " + mat2str(g_constrained))
+        
+        % Actually run the instrument test
+        [c, ~] = calculate_device_cost(app, g_constrained, w, f_min, f_max, s_p);
+        
+        disp("Measured Cost: " + c)
+    end
+
+    function stop = outfun(g, optimValues, state)
+        stop = false;
+        
+        % Capture history from fminsearch internal iterations for your plot
+        if strcmp(state, 'iter')
+            g_clamped = min(max(round(g), minCGap), maxCGap);
+            costHistory(end+1) = optimValues.fval;
+            gapHistory(end+1, :) = g_clamped(:)';
+            
+            % Stop early if we beat our target cost
+            if optimValues.fval <= targetCost
+                stop = true;
+                disp("Target cost reached! Stopping search early.")
+            end
+        end
+    end
+end

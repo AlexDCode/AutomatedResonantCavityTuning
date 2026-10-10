@@ -1,4 +1,14 @@
 function waitForResponse(app)
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DESCRIPTION:
+% Waits for the Pico to request input.
+% 
+% INPUT:
+%   app            - MATLAB application object
+% 
+% OUTPUT:
+%   void
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     if ~isempty(app.pico) && isvalid(app.pico)
         while true
             % Only try to read if there is actually text waiting in the buffer

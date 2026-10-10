@@ -1,27 +1,27 @@
 function [gaps, peak_db, peak_freq, freq_min, freq_max] = centeredAlgoOpt(app, freq_min, freq_max, gap_max, num_actuators, indexPrecision, desiredCenterFreq, goals)
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    % DESCRIPTION:
-    % The function AlgoOpt is an algorithm which finds the
-    % best filter response by searching for the peak insertion
-    % S-parameters. It first finds the peak S21 value for gap 1, holding
-    % gap 1, the peak S31 value is found by iterating gap 3 and gap 4. This
-    % process is repeated for gap 2.
-    %
-    % INPUT:
-    %   app            - DEF
-    %   freq_min       - DEF
-    %   freq_max       - DEF
-    %   gap_max        - DEF
-    %   num_actuators  - DEF
-    %   indexPrecision - DEF
-    %
-    % OUTPUT:
-    %   gaps           - DEF
-    %   peak_db        - DEF
-    %   peak_freq      - DEF
-    %   freq_min       - DEF
-    %   freq_max       - DEF
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DESCRIPTION: ~Not In Use Right Now~
+% The function is an algorithm which finds the
+% best filter response by searching for the peak insertion
+% S-parameters. It first finds the peak S21 value for gap 1, holding
+% gap 1, the peak S31 value is found by iterating gap 3 and gap 4. This
+% process is repeated for gap 2.
+%
+% INPUT:
+%   app            - DEF
+%   freq_min       - DEF
+%   freq_max       - DEF
+%   gap_max        - DEF
+%   num_actuators  - DEF
+%   indexPrecision - DEF
+%
+% OUTPUT:
+%   gaps           - DEF
+%   peak_db        - DEF
+%   peak_freq      - DEF
+%   freq_min       - DEF
+%   freq_max       - DEF
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
     % Setup Variables
     max_height = 4000; % removes the capacitance from an actuator by setting it high

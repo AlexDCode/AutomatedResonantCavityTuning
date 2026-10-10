@@ -1,4 +1,14 @@
 function maxGap = findMaxGap()
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Description:
+% Finds kappa (point of most curvature) on the distance capacitance
+% relationship and selects the correspond gap value.
+%
+%   Input
+%    
+%   Output
+%      maxGap - maximum necessary gap for the device.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     gap = linspace(1, 4000, 150);
     
     [b, inner_r, wr, e0, ~] = getPhysicalConst();
@@ -57,23 +67,23 @@ function maxGap = findMaxGap()
 
     maxGap = min(gap_knee1, gap_knee2);
  
-    % --- Plotting Results ---
-    fig = figure();
-    loglog(gap, C1_total, 'LineStyle', '-', 'Color', 'r', 'LineWidth', 4);
-    hold("on");
-    loglog(gap, C2_total, 'LineStyle', ':', 'Color', 'b', 'LineWidth', 4);
-
-    % Plot maximum curvature points as solid markers (kappa point)
-    loglog(gap_knee1, C1_knee1, 'ro', 'MarkerSize', 10, 'MarkerFaceColor', 'r');
-    loglog(gap_knee2, C2_knee2, 'bo', 'MarkerSize', 10, 'MarkerFaceColor', 'b');
-    
-    center = 349.906;
-    xl = xline(center, '--', 'LineWidth', 2);
-
-    xlabel('Distance (\mum)', 'FontSize', 20);
-    ylabel('Capacitance (pF)', 'FontSize', 20);
-    title('Capacitance Over Distance', 'FontSize', 20);
-    grid("off");
-    legend('C1 (Full Disc Plate)', 'C2 (Ring with Fringing Baseline)', 'FontSize', 10);
-    hold('off');
+    % % --- Plotting Results ---
+    % fig = figure();
+    % loglog(gap, C1_total, 'LineStyle', '-', 'Color', 'r', 'LineWidth', 4);
+    % hold("on");
+    % loglog(gap, C2_total, 'LineStyle', ':', 'Color', 'b', 'LineWidth', 4);
+    % 
+    % % Plot maximum curvature points as solid markers (kappa point)
+    % loglog(gap_knee1, C1_knee1, 'ro', 'MarkerSize', 10, 'MarkerFaceColor', 'r');
+    % loglog(gap_knee2, C2_knee2, 'bo', 'MarkerSize', 10, 'MarkerFaceColor', 'b');
+    % 
+    % center = 349.906;
+    % xl = xline(center, '--', 'LineWidth', 2);
+    % 
+    % xlabel('Distance (\mum)', 'FontSize', 20);
+    % ylabel('Capacitance (pF)', 'FontSize', 20);
+    % title('Capacitance Over Distance', 'FontSize', 20);
+    % grid("off");
+    % legend('C1 (Full Disc Plate)', 'C2 (Ring with Fringing Baseline)', 'FontSize', 10);
+    % hold('off');
 end

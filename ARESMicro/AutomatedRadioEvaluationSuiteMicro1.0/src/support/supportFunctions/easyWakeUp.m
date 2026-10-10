@@ -1,4 +1,15 @@
 function easyWakeUp(app)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DESCRIPTION:
+% Begins the execution of a new program on the Pico, given it is a
+% currently connected object.
+%
+% INPUT:
+%   app            - MATLAB application object
+%
+% OUTPUT:
+%   void
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     app.ConnectionStatusActual.Text = 'Easy Wakeup';
     fprintf("Easy Wake Up\n");
     % Wake up the controller's program

@@ -1,4 +1,17 @@
 function extractPicoLog(app, CMD_EXTRACT_LOG)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DESCRIPTION:
+% Sends the command to the Pico to retrieve logged data, specifically
+% notable actuator positons.
+%
+% INPUT:
+%   app             - MATLAB application object
+%   CMD_EXTRACT_LOG - Command to get logged data from pico (may be out
+%                     dated for C05 command).
+%
+% OUTPUT:
+%   void           
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     % --- EXPLICIT FILE CHECK & CREATION ---
     % If the file doesn't exist, touch it by opening in write mode ('w') and immediately closing it
     if ~isfile(app.localLogPath)
@@ -15,7 +28,6 @@ function extractPicoLog(app, CMD_EXTRACT_LOG)
     fclose('all'); 
     
     app.waitForResponse();
-    %fprintf("Requesting log file from Pico internal flash...\n");
     
     writeline(app.pico, CMD_EXTRACT_LOG);
 

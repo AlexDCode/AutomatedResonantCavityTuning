@@ -1,5 +1,5 @@
 %% 1. Load the Touchstone .s4p File
-filename = ['C:\Users\skrdl\OneDrive - purdue.edu\SURF\DATA\SURF Research\LIVED1.s4p']; % Replace with your file path
+filename = ['']; % Replace with your file path
 s_data = sparameters(filename);
 center_freq = 1.73;
 axisMin = 1.5;

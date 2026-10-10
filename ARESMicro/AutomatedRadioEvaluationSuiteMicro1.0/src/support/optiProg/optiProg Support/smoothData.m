@@ -1,5 +1,17 @@
 function [y1_warped, y2_warped, R_after] = smoothData(y1, y2)
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DESCRIPTION: 
+% Data smoothing function (may not be in use!) 
+%
+% INPUT:
+%   y1      - original data for variable 1
+%   y2      - original data for variable 2
+%
+% OUTPUT:
+%   y1_warped           - smoothed variable 1 data
+%   y2_warped           - smoothed variable 2 data
+%   R_after             - correlation coeff.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %% Pre-process: Smooth out local variations/noise
     % This leaves just the macro-shape before we try to match them
     windowSize = 15;

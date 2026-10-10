@@ -1,4 +1,14 @@
 function hardWakeUp(app)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DESCRIPTION:
+% Re-boots a newly connected Pico object, when beginning connection.
+%
+% INPUT:
+%   app            - MATLAB application object
+%
+% OUTPUT:
+%   void
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     app.ConnectionStatusActual.Text = 'Hard Wakeup';
     fprintf("Waking up Pico and exiting Raw REPL...\n");
     
