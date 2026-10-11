@@ -31,10 +31,36 @@ Microwave cavity filters are critical components in modern communication and RF 
 
 ### Prerequisites
 
-* **MATLAB** (R2025a or newer recommended)
+* **MATLAB** (Version R2025a or newer recommended)
   * Optimization Toolbox
   * Symbolic Math Toolbox
   * Instrument Control Toolbox
+ 
+* **Python** (Version 3.8 or newer recommended)
+  * MicroPico Library
+  * Raspberry Pi Pico Library
+    
+* Raspberry Pi Pico 2 (or other compatable type)
+  * sda GPIO: 16, 26, 20, 18
+  * SCL GPIO: 17, 27, 21, 19
+
+* **System**
+  * 1 to 4 Signal Ports
+  * Up to 8 "Tuners" (For this system they are M3-LS Actuators)
+  
+* **VNA**
+  * Agilent Technologies E5072A
+  * Copper Mountain CMT808U
+  * Keysight Technologies N5232B
+  * VNAs can be added to instrumentAddresses file
+ 
+### Authors
+* Peter Skrdla
+* Joe Kritenbrink
+* Mentor: Alex David Santiago Vargas (@AlexDCode, Google Scholar)
+* PI: Dimitrios Peroulis (Google Scholar)
+* Adaptive Radio Electronics and Sensors Group
+* Purdue University
 
 ### Installation
 
